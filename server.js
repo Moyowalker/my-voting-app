@@ -5,19 +5,35 @@ const bodyParser = require('body-parser');
 const logger = require("morgan");
 const Data = require("./data");
 
+const connectDB = require('./config/db');
+
 const API_PORT = 4200;
 const app = express();
 app.use(cors());
 const router = express.Router();
 
 //Mongo database variable
+connectDB();
 
+// const dbRoute = "mongodb+srv://votingDB:moyosore@votingcluster0-gvuey.mongodb.net/test?retryWrites=true&w=majority"
 
 //Mongo database connection to our backend code
+// mongoose.connect(dbRoute, { useNewUrlParser: true });
 
+// let db = mongoose.connection;
+
+// db.once('open', () => console.log('It has been connected to the database'));
 
 //to check mongo db connection is successful
+// db.on("error", console.error.bind(console, 'MongoDB Connection error:'));
 
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://votingDB:<password>@votingcluster0-gvuey.mongodb.net/test?retryWrites=true&w=majority"
+// const client = new MongoClient(uri, {useNewUrlParser: true});
+// client.connect(err => {
+//     const collection = client.db("test").collection("devices");
+//     client.close();
+// });
 
 //This is (Optional) only made for logging and bodyParser, parses the request body to be a readable JSON format
 // But I need this so i will invoke it 
