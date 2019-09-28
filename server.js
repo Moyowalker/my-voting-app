@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const logger = require("morgan");
 const Data = require("./data");
 
-const connectDB = require('./config/db');
+// const connectDB = require('./config/db');
 
 const API_PORT = 4200;
 const app = express();
@@ -13,19 +13,19 @@ app.use(cors());
 const router = express.Router();
 
 //Mongo database variable
-connectDB();
+// connectDB();
 
-// const dbRoute = "mongodb+srv://votingDB:moyosore@votingcluster0-gvuey.mongodb.net/test?retryWrites=true&w=majority"
+const dbRoute = "mongodb+srv://votingDB:moyosore@votingcluster0-gvuey.mongodb.net/test?retryWrites=true&w=majority"
 
 //Mongo database connection to our backend code
-// mongoose.connect(dbRoute, { useNewUrlParser: true });
+mongoose.connect(dbRoute, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// let db = mongoose.connection;
+let db = mongoose.connection;
 
-// db.once('open', () => console.log('It has been connected to the database'));
+db.once('open', () => console.log('It has been connected to the database'));
 
 //to check mongo db connection is successful
-// db.on("error", console.error.bind(console, 'MongoDB Connection error:'));
+db.on("error", console.error.bind(console, 'MongoDB Connection error:'));
 
 // const MongoClient = require('mongodb').MongoClient;
 // const uri = "mongodb+srv://votingDB:<password>@votingcluster0-gvuey.mongodb.net/test?retryWrites=true&w=majority"
